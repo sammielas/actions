@@ -3,7 +3,8 @@ name: ASCII Workflow
 on: push
 
 jobs:
-    first_job:
+    Build_job:
+        name: Build Job
         runs-on: ubuntu-latest
         steps:
         - name: checkout repo
@@ -16,5 +17,29 @@ jobs:
           run: |
             chmod +x script.sh
             ./script.sh
+    Test_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout repo
+          uses: actions/checkout@v4
 
-       
+        - name: List repo files
+          run:  ls -ltra
+
+        - name: executing script
+          run: |
+            chmod +x script.sh
+            ./script.sh   
+    Deploy_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout repo
+          uses: actions/checkout@v4
+
+        - name: List repo files
+          run:  ls -ltra
+
+        - name: executing script
+          run: |
+            chmod +x script.sh
+            ./script.sh
